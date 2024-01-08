@@ -28,11 +28,11 @@ public class GameFrame{
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setBounds(0,0,1920,1040);
 
-//        JLabel background=new JLabel(new ImageIcon("src/images/background.png"));
-//        frame.add(background);
-//        background.setLayout(new FlowLayout());
-//        background.setSize(399,399);
-//        background.setSize(1920,1080);
+        JLabel background=new JLabel(new ImageIcon("src/images/background.png"));
+        frame.add(background);
+        background.setLayout(new FlowLayout());
+        background.setSize(399,399);
+        background.setSize(1920,1080);
 
         // Create a menu bar
         JMenuBar menuBar = new JMenuBar();
@@ -79,7 +79,7 @@ public class GameFrame{
         btn50.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                btn50.setEnabled(false);
 
             }
         });
@@ -98,6 +98,7 @@ public class GameFrame{
                 ImageIcon icon = new ImageIcon("src/images/telephone.png");
 
                 JOptionPane.showMessageDialog(frame, message, "Ask a friend", JOptionPane.PLAIN_MESSAGE, icon);
+                btnCall.setEnabled(false);
             }
         });
         btnAudience.addActionListener(new ActionListener() {
@@ -109,6 +110,7 @@ public class GameFrame{
                 message.setHorizontalAlignment(SwingConstants.CENTER);
 
                 JOptionPane.showMessageDialog(frame,message,"Votes from the audience",JOptionPane.PLAIN_MESSAGE);
+                btnAudience.setEnabled(false);
             }
         });
 
@@ -118,7 +120,7 @@ public class GameFrame{
         questionPanel.setBounds(40,560,1820,480);
         //questionPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 10, 10));
         questionPanel.setLayout(new GridBagLayout());
-        questionPanel.setBackground(Color.pink);
+        //questionPanel.setBackground(Color.pink);
 
 
         question.setText(vupros.getAsk());

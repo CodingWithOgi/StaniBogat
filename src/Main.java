@@ -5,6 +5,7 @@ import javax.swing.*;
 public class Main {
     public static void main(String[] args) {
         //GameFrame frame = new GameFrame();
-        AddAQuestionFrame frame = new AddAQuestionFrame();
+        //AddAQuestionFrame frame = new AddAQuestionFrame();
+        Menu menu = new Menu();
     }
 }
