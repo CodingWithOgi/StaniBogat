@@ -9,12 +9,24 @@ import javax.swing.ImageIcon;
 // Driver Class
 public class GameFrame{
 
+    int rightAnswers = 0,questionIdx = 0;
+    Question vupros = new Question();
+    int correctAns= vupros.getCorrectans();
 
+    JLabel otg = new JLabel();
+
+    JRadioButton opt1 = new JRadioButton();
+    JRadioButton opt2 = new JRadioButton();
+    JRadioButton opt3 = new JRadioButton();
+    JRadioButton opt4 = new JRadioButton();
+    ButtonGroup group = new ButtonGroup();
+    JLabel question = new JLabel();
     public GameFrame(){
         // Create the main frame
         JFrame frame = new JFrame("Stani Bogat");
+        frame.setLayout(null);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(1920, 1080);
+        frame.setBounds(0,0,1920,1040);
 
 //        JLabel background=new JLabel(new ImageIcon("src/images/background.png"));
 //        frame.add(background);
@@ -30,17 +42,25 @@ public class GameFrame{
         fileMenu.add(settingItem);
         fileMenu.addSeparator();
         fileMenu.add(exitItem);
+        Image icon = Toolkit.getDefaultToolkit().getImage("src/images/gameicon.png");
+        frame.setIconImage(icon);
         exitItem.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 System.exit(0);
             }
         });
+        settingItem.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                SettingFrame setting = new SettingFrame();
+            }
+        });
         menuBar.add(fileMenu);
 
         // Create a panel with a button
         JPanel hintsPanel = new JPanel();
-        hintsPanel.setLayout(null);
+        hintsPanel.setLayout(new FlowLayout());
         hintsPanel.setBounds(1600,0,320,100);
         JButton btn50 = new JButton("50/50");
         btn50.setBounds(1620,15,80,40);
@@ -52,6 +72,8 @@ public class GameFrame{
         hintsPanel.add(btnCall);
         hintsPanel.add(btn50);
         hintsPanel.add(btnAudience);
+
+        otg.setBounds(1600,60,300,40);
 
         // Add action to the button
         btn50.addActionListener(new ActionListener() {
@@ -93,42 +115,133 @@ public class GameFrame{
 
         // Create another panel with text
         JPanel questionPanel = new JPanel ();
-        questionPanel.setBounds(0,600,1920,480);
-        //questionPanel.setLayout(null);
+        questionPanel.setBounds(40,560,1820,480);
+        //questionPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 10, 10));
+        questionPanel.setLayout(new GridBagLayout());
         questionPanel.setBackground(Color.pink);
 
-        JLabel question = new JLabel("<html>Prez 2024 zapochva razrabotkata na proekt na java.<br>Koi sa negovite syzdateli?</html>");
-        question.setHorizontalAlignment(SwingConstants.CENTER);
-        question.setFont(new Font("Arial",Font.BOLD, 40));
-        question.setBounds(60,620,1800,100);
 
-        JRadioButton opt1 = new JRadioButton("Miro i Kalata");
+        question.setText(vupros.getAsk());
+        //question.setVerticalAlignment(SwingConstants.NORTH);
+        question.setFont(new Font("Arial",Font.BOLD, 40));
+        //question.setBounds(60,620,1800,100);
+        //question.setHorizontalAlignment(SwingConstants.CENTER);
+
+
+        opt1.setText(vupros.getAns1());
         opt1.setBounds(40,800,700,100);
-        JRadioButton opt2 = new JRadioButton("Kris I Drenchev");
+        opt2.setText(vupros.getAns2());
         opt2.setBounds(40,940,700,100);
-        JRadioButton opt3 = new JRadioButton("Ogi i Stefcho");
+        opt3.setText(vupros.getAns3());
         opt3.setBounds(800,800,700,100);
-        JRadioButton opt4 = new JRadioButton("Momichetata");
+        opt4.setText(vupros.getAns4());
         opt4.setBounds(800,940,700,100);
-        ButtonGroup group = new ButtonGroup();
+
+        opt1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                opt1.setEnabled(false);
+                opt2.setEnabled(false);
+                opt3.setEnabled(false);
+                opt4.setEnabled(false);
+                if(correctAns == 1){
+                    JOptionPane.showMessageDialog(frame,"Congratulations, your answer is right!","RIGHT ANSWER",JOptionPane.PLAIN_MESSAGE);
+                    rightAnswers++;
+                    new_question();
+                }else{
+                    JOptionPane.showMessageDialog(frame,"This is the wrong answer. It was still a good run and you got "+ rightAnswers + " correct answers.","WRONG ANSWER",JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        });
+        opt2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                opt1.setEnabled(false);
+                opt2.setEnabled(false);
+                opt3.setEnabled(false);
+                opt4.setEnabled(false);
+                if(correctAns == 2){
+                    JOptionPane.showMessageDialog(frame,"Congratulations, your answer is right!","RIGHT ANSWER",JOptionPane.PLAIN_MESSAGE);
+                    rightAnswers++;
+                    new_question();
+                }else{
+                    JOptionPane.showMessageDialog(frame,"This is the wrong answer. It was still a good run and you got "+ rightAnswers + " correct answers.","WRONG ANSWER",JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        });
+        opt3.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                opt1.setEnabled(false);
+                opt2.setEnabled(false);
+                opt3.setEnabled(false);
+                opt4.setEnabled(false);
+                if(correctAns == 3){
+                    JOptionPane.showMessageDialog(frame,"Congratulations, your answer is right!","RIGHT ANSWER",JOptionPane.PLAIN_MESSAGE);
+                    rightAnswers++;
+                    new_question();
+                }else{
+                    JOptionPane.showMessageDialog(frame,"This is the wrong answer. It was still a good run and you got "+ rightAnswers + " correct answers.","WRONG ANSWER",JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        });
+        opt4.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                opt1.setEnabled(false);
+                opt2.setEnabled(false);
+                opt3.setEnabled(false);
+                opt4.setEnabled(false);
+                if(correctAns == 4){
+                    JOptionPane.showMessageDialog(frame,"Congratulations, your answer is right!","RIGHT ANSWER",JOptionPane.PLAIN_MESSAGE);
+                    rightAnswers++;
+                    new_question();
+                }else{
+                    JOptionPane.showMessageDialog(frame,"This is the wrong answer. It was still a good run and you got "+ rightAnswers + " correct answers.","WRONG ANSWER",JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        });
+
         group.add(opt1);
         group.add(opt2);
         group.add(opt3);
         group.add(opt4);
 
-
-        questionPanel.add(question);
-        questionPanel.add(opt1);
-        questionPanel.add(opt2);
-        questionPanel.add(opt3);
+        GridBagConstraints c = new GridBagConstraints();
+        c.fill = GridBagConstraints.PAGE_START;
+        questionPanel.add(question,c);
+        c.fill = GridBagConstraints.LINE_START;
+        questionPanel.add(opt1,c);
+        c.fill = GridBagConstraints.LINE_END;
+        questionPanel.add(opt2,c);
+        c.fill = GridBagConstraints.LAST_LINE_START;
+        questionPanel.add(opt3,c);
+        c.fill = GridBagConstraints.LAST_LINE_END;
         questionPanel.add(opt4);
         frame.add(questionPanel);
 
         // Set layout for the main frame
+        frame.add(otg);
         frame.setLayout(null);
         frame.setJMenuBar(menuBar);
         frame.add(hintsPanel);
 
         frame.setVisible(true);
+    }
+    void new_question(){
+        otg.setText("You have answered correctly to "+ rightAnswers+ " questions.");
+        questionIdx++; /// calculate randomly
+        vupros.change_question(questionIdx);
+        correctAns = vupros.getCorrectans();
+        question.setText(vupros.getAsk());
+        opt1.setText(vupros.getAns1());
+        opt2.setText(vupros.getAns2());
+        opt3.setText(vupros.getAns3());
+        opt4.setText(vupros.getAns4());
+        opt1.setEnabled(true);
+        opt2.setEnabled(true);
+        opt3.setEnabled(true);
+        opt4.setEnabled(true);
+        group.clearSelection();
     }
 }
