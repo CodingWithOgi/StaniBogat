@@ -28,11 +28,11 @@ public class GameFrame{
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setBounds(0,0,1920,1040);
 
-        JLabel background=new JLabel(new ImageIcon("src/images/background.png"));
-        frame.add(background);
-        background.setLayout(new FlowLayout());
-        background.setSize(399,399);
-        background.setSize(1920,1080);
+//        JLabel background=new JLabel(new ImageIcon("src/images/background.png"));
+//        frame.add(background);
+//        background.setLayout(new FlowLayout());
+//        background.setSize(399,399);
+//        background.setSize(1920,1080);
 
         // Create a menu bar
         JMenuBar menuBar = new JMenuBar();
@@ -119,7 +119,7 @@ public class GameFrame{
         JPanel questionPanel = new JPanel ();
         questionPanel.setBounds(40,560,1820,480);
         //questionPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 10, 10));
-        questionPanel.setLayout(new GridBagLayout());
+        questionPanel.setLayout(new FlowLayout());
         //questionPanel.setBackground(Color.pink);
 
 
@@ -147,11 +147,14 @@ public class GameFrame{
                 opt3.setEnabled(false);
                 opt4.setEnabled(false);
                 if(correctAns == 1){
-                    JOptionPane.showMessageDialog(frame,"Congratulations, your answer is right!","RIGHT ANSWER",JOptionPane.PLAIN_MESSAGE);
+                    ImageIcon icon = new ImageIcon("src/images/right.png");
+                    JOptionPane.showMessageDialog(frame,"Congratulations, your answer is right!","RIGHT ANSWER",JOptionPane.PLAIN_MESSAGE,icon);
                     rightAnswers++;
                     new_question();
                 }else{
-                    JOptionPane.showMessageDialog(frame,"This is the wrong answer. It was still a good run and you got "+ rightAnswers + " correct answers.","WRONG ANSWER",JOptionPane.ERROR_MESSAGE);
+                    ImageIcon icon = new ImageIcon("src/images/wrong.png");
+                    JOptionPane.showMessageDialog(frame,"This is the wrong answer. It was still a good run and you got "+ rightAnswers + " correct answers."
+                            ,"WRONG ANSWER",JOptionPane.PLAIN_MESSAGE,icon);
                 }
             }
         });
@@ -163,11 +166,14 @@ public class GameFrame{
                 opt3.setEnabled(false);
                 opt4.setEnabled(false);
                 if(correctAns == 2){
-                    JOptionPane.showMessageDialog(frame,"Congratulations, your answer is right!","RIGHT ANSWER",JOptionPane.PLAIN_MESSAGE);
+                    ImageIcon icon = new ImageIcon("src/images/right.png");
+                    JOptionPane.showMessageDialog(frame,"Congratulations, your answer is right!","RIGHT ANSWER",JOptionPane.PLAIN_MESSAGE,icon);
                     rightAnswers++;
                     new_question();
                 }else{
-                    JOptionPane.showMessageDialog(frame,"This is the wrong answer. It was still a good run and you got "+ rightAnswers + " correct answers.","WRONG ANSWER",JOptionPane.ERROR_MESSAGE);
+                    ImageIcon icon = new ImageIcon("src/images/wrong.png");
+                    JOptionPane.showMessageDialog(frame,"This is the wrong answer. It was still a good run and you got "+ rightAnswers + " correct answers."
+                            ,"WRONG ANSWER",JOptionPane.PLAIN_MESSAGE,icon);
                 }
             }
         });
@@ -179,11 +185,14 @@ public class GameFrame{
                 opt3.setEnabled(false);
                 opt4.setEnabled(false);
                 if(correctAns == 3){
-                    JOptionPane.showMessageDialog(frame,"Congratulations, your answer is right!","RIGHT ANSWER",JOptionPane.PLAIN_MESSAGE);
+                    ImageIcon icon = new ImageIcon("src/images/right.png");
+                    JOptionPane.showMessageDialog(frame,"Congratulations, your answer is right!","RIGHT ANSWER",JOptionPane.PLAIN_MESSAGE,icon);
                     rightAnswers++;
                     new_question();
                 }else{
-                    JOptionPane.showMessageDialog(frame,"This is the wrong answer. It was still a good run and you got "+ rightAnswers + " correct answers.","WRONG ANSWER",JOptionPane.ERROR_MESSAGE);
+                    ImageIcon icon = new ImageIcon("src/images/wrong.png");
+                    JOptionPane.showMessageDialog(frame,"This is the wrong answer. It was still a good run and you got "+ rightAnswers + " correct answers."
+                            ,"WRONG ANSWER",JOptionPane.PLAIN_MESSAGE,icon);
                 }
             }
         });
@@ -195,11 +204,14 @@ public class GameFrame{
                 opt3.setEnabled(false);
                 opt4.setEnabled(false);
                 if(correctAns == 4){
-                    JOptionPane.showMessageDialog(frame,"Congratulations, your answer is right!","RIGHT ANSWER",JOptionPane.PLAIN_MESSAGE);
+                    ImageIcon icon = new ImageIcon("src/images/right.png");
+                    JOptionPane.showMessageDialog(frame,"Congratulations, your answer is right!","RIGHT ANSWER",JOptionPane.PLAIN_MESSAGE,icon);
                     rightAnswers++;
                     new_question();
                 }else{
-                    JOptionPane.showMessageDialog(frame,"This is the wrong answer. It was still a good run and you got "+ rightAnswers + " correct answers.","WRONG ANSWER",JOptionPane.ERROR_MESSAGE);
+                    ImageIcon icon = new ImageIcon("src/images/wrong.png");
+                    JOptionPane.showMessageDialog(frame,"This is the wrong answer. It was still a good run and you got "+ rightAnswers + " correct answers."
+                            ,"WRONG ANSWER",JOptionPane.PLAIN_MESSAGE,icon);
                 }
             }
         });

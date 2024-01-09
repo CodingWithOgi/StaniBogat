@@ -2,11 +2,11 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.Image;
-import java.awt.event.FocusEvent;
-import java.awt.image.ImageObserver;
-import javax.swing.ImageIcon;
+import java.util.ArrayList;
+import java.util.List;
+
 public class AddAQuestionFrame {
+    public static List<Question> list = new ArrayList<>();
     public AddAQuestionFrame(){
         JFrame frame = new JFrame("Add a question");
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -18,6 +18,7 @@ public class AddAQuestionFrame {
         JTextField ans3fld = new JTextField("Type in answer 3 here.");
         JTextField ans4fld = new JTextField("Type in answer 4 here.");
         JButton ready = new JButton("SUBMIT");
+        JTextField correctfld = new JTextField("Which of the four options is the correct answer?");
 
         questionfld.setBounds(260,150,1400,100);
         questionfld.setFont(new Font("Ariel", Font.PLAIN,40));
@@ -37,10 +38,14 @@ public class AddAQuestionFrame {
         ans3fld.setHorizontalAlignment(SwingConstants.CENTER);
 
         ans4fld.setBounds(1000,520,700,80);
-        ans4fld.setFont(new Font("Airel",Font.PLAIN,25));
+        ans4fld.setFont(new Font("Ariel",Font.PLAIN,25));
         ans4fld.setHorizontalAlignment(SwingConstants.CENTER);
 
-        ready.setBounds(860,700,200,80);
+        correctfld.setBounds(700,700,520,60);
+        correctfld.setFont(new Font("Ariel",Font.PLAIN,20));
+        correctfld.setHorizontalAlignment(SwingConstants.CENTER);
+
+        ready.setBounds(860,800,200,80);
         ready.setHorizontalAlignment(SwingConstants.CENTER);
         ready.setBackground(Color.PINK);
 
@@ -48,8 +53,23 @@ public class AddAQuestionFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // zapisva vyv file-a
-                JOptionPane.showMessageDialog(null,"Added a question","Successfully added a question!", JOptionPane.PLAIN_MESSAGE);
-                frame.dispose();
+                String p = "z"+ correctfld.getText();
+                p+= "z";
+                if(!(correctfld.getText().equals("1") || correctfld.getText().equals("2") || correctfld.getText().equals("3") || correctfld.getText().equals("4"))){
+                    JOptionPane.showMessageDialog(null,"The correct answer should be a number 1 - 4","Correct answer invalid!", JOptionPane.ERROR_MESSAGE);
+                }else{
+                    JOptionPane.showMessageDialog(null,"Added a question","Successfully added a question!", JOptionPane.PLAIN_MESSAGE);
+                    int cr=2;
+                    switch (correctfld.getText()){
+                        case "1" : cr=1; break;
+                        case "2" : cr=2; break;
+                        case "3" : cr=3; break;
+                        case "4" : cr=4; break;
+                    }
+                    list.add(new Question(questionfld.getText(),ans1fld.getText(),ans2fld.getText(),ans3fld.getText(),ans4fld.getText(),cr));
+                    frame.dispose();
+                }
+
             }
         });
 
@@ -59,6 +79,7 @@ public class AddAQuestionFrame {
         frame.add(ans3fld);
         frame.add(ans4fld);
         frame.add(ready);
+        frame.add(correctfld);
         frame.setVisible(true);
     }
 }
