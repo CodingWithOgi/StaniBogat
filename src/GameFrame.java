@@ -79,7 +79,7 @@ public class GameFrame{
         btn50.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                btn50.setEnabled(false);
 
             }
         });
@@ -98,6 +98,7 @@ public class GameFrame{
                 ImageIcon icon = new ImageIcon("src/images/telephone.png");
 
                 JOptionPane.showMessageDialog(frame, message, "Ask a friend", JOptionPane.PLAIN_MESSAGE, icon);
+                btnCall.setEnabled(false);
             }
         });
         btnAudience.addActionListener(new ActionListener() {
@@ -109,6 +110,7 @@ public class GameFrame{
                 message.setHorizontalAlignment(SwingConstants.CENTER);
 
                 JOptionPane.showMessageDialog(frame,message,"Votes from the audience",JOptionPane.PLAIN_MESSAGE);
+                btnAudience.setEnabled(false);
             }
         });
 
@@ -117,8 +119,8 @@ public class GameFrame{
         JPanel questionPanel = new JPanel ();
         questionPanel.setBounds(40,560,1820,480);
         //questionPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 10, 10));
-        questionPanel.setLayout(new GridBagLayout());
-        questionPanel.setBackground(Color.pink);
+        questionPanel.setLayout(new FlowLayout());
+        //questionPanel.setBackground(Color.pink);
 
 
         question.setText(vupros.getAsk());
@@ -145,11 +147,14 @@ public class GameFrame{
                 opt3.setEnabled(false);
                 opt4.setEnabled(false);
                 if(correctAns == 1){
-                    JOptionPane.showMessageDialog(frame,"Congratulations, your answer is right!","RIGHT ANSWER",JOptionPane.PLAIN_MESSAGE);
+                    ImageIcon icon = new ImageIcon("src/images/right.png");
+                    JOptionPane.showMessageDialog(frame,"Congratulations, your answer is right!","RIGHT ANSWER",JOptionPane.PLAIN_MESSAGE,icon);
                     rightAnswers++;
                     new_question();
                 }else{
-                    JOptionPane.showMessageDialog(frame,"This is the wrong answer. It was still a good run and you got "+ rightAnswers + " correct answers.","WRONG ANSWER",JOptionPane.ERROR_MESSAGE);
+                    ImageIcon icon = new ImageIcon("src/images/wrong.png");
+                    JOptionPane.showMessageDialog(frame,"This is the wrong answer. It was still a good run and you got "+ rightAnswers + " correct answers."
+                            ,"WRONG ANSWER",JOptionPane.PLAIN_MESSAGE,icon);
                 }
             }
         });
@@ -161,11 +166,14 @@ public class GameFrame{
                 opt3.setEnabled(false);
                 opt4.setEnabled(false);
                 if(correctAns == 2){
-                    JOptionPane.showMessageDialog(frame,"Congratulations, your answer is right!","RIGHT ANSWER",JOptionPane.PLAIN_MESSAGE);
+                    ImageIcon icon = new ImageIcon("src/images/right.png");
+                    JOptionPane.showMessageDialog(frame,"Congratulations, your answer is right!","RIGHT ANSWER",JOptionPane.PLAIN_MESSAGE,icon);
                     rightAnswers++;
                     new_question();
                 }else{
-                    JOptionPane.showMessageDialog(frame,"This is the wrong answer. It was still a good run and you got "+ rightAnswers + " correct answers.","WRONG ANSWER",JOptionPane.ERROR_MESSAGE);
+                    ImageIcon icon = new ImageIcon("src/images/wrong.png");
+                    JOptionPane.showMessageDialog(frame,"This is the wrong answer. It was still a good run and you got "+ rightAnswers + " correct answers."
+                            ,"WRONG ANSWER",JOptionPane.PLAIN_MESSAGE,icon);
                 }
             }
         });
@@ -177,11 +185,14 @@ public class GameFrame{
                 opt3.setEnabled(false);
                 opt4.setEnabled(false);
                 if(correctAns == 3){
-                    JOptionPane.showMessageDialog(frame,"Congratulations, your answer is right!","RIGHT ANSWER",JOptionPane.PLAIN_MESSAGE);
+                    ImageIcon icon = new ImageIcon("src/images/right.png");
+                    JOptionPane.showMessageDialog(frame,"Congratulations, your answer is right!","RIGHT ANSWER",JOptionPane.PLAIN_MESSAGE,icon);
                     rightAnswers++;
                     new_question();
                 }else{
-                    JOptionPane.showMessageDialog(frame,"This is the wrong answer. It was still a good run and you got "+ rightAnswers + " correct answers.","WRONG ANSWER",JOptionPane.ERROR_MESSAGE);
+                    ImageIcon icon = new ImageIcon("src/images/wrong.png");
+                    JOptionPane.showMessageDialog(frame,"This is the wrong answer. It was still a good run and you got "+ rightAnswers + " correct answers."
+                            ,"WRONG ANSWER",JOptionPane.PLAIN_MESSAGE,icon);
                 }
             }
         });
@@ -193,11 +204,14 @@ public class GameFrame{
                 opt3.setEnabled(false);
                 opt4.setEnabled(false);
                 if(correctAns == 4){
-                    JOptionPane.showMessageDialog(frame,"Congratulations, your answer is right!","RIGHT ANSWER",JOptionPane.PLAIN_MESSAGE);
+                    ImageIcon icon = new ImageIcon("src/images/right.png");
+                    JOptionPane.showMessageDialog(frame,"Congratulations, your answer is right!","RIGHT ANSWER",JOptionPane.PLAIN_MESSAGE,icon);
                     rightAnswers++;
                     new_question();
                 }else{
-                    JOptionPane.showMessageDialog(frame,"This is the wrong answer. It was still a good run and you got "+ rightAnswers + " correct answers.","WRONG ANSWER",JOptionPane.ERROR_MESSAGE);
+                    ImageIcon icon = new ImageIcon("src/images/wrong.png");
+                    JOptionPane.showMessageDialog(frame,"This is the wrong answer. It was still a good run and you got "+ rightAnswers + " correct answers."
+                            ,"WRONG ANSWER",JOptionPane.PLAIN_MESSAGE,icon);
                 }
             }
         });
