@@ -13,12 +13,22 @@ public class Question {
     }
     // vzima se vypros s idx ot file
     public void change_question(int idx){
-        ask = "Koi e nai-bogatiqt chovek na zemqta?";
-        ans1 = "Bill Gates";
-        ans2 = "Elon Musk";
-        ans3 = "Stefan Mitev";
-        ans4 = "Ognyan Yorogv";
-        correctans = 4;
+        idx--;
+        ask = AddAQuestionFrame.list.get(idx).ask;
+        ans1 = AddAQuestionFrame.list.get(idx).ans1;
+        ans2 = AddAQuestionFrame.list.get(idx).ans2;
+        ans3 = AddAQuestionFrame.list.get(idx).ans3;
+        ans4 = AddAQuestionFrame.list.get(idx).ans4;
+        correctans = AddAQuestionFrame.list.get(idx).correctans;
+    }
+    public Question (String ask,String ans1,String ans2,String ans3, String ans4,int correctans){
+        this.ask=ask;
+        this.ans1=ans1;
+        this.ans2=ans2;
+        this.ans3=ans3;
+        this.ans4=ans4;
+        this.correctans=correctans;
+
     }
     public String getAsk() {
         return ask;
