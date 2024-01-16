@@ -15,10 +15,10 @@ public class GameFrame{
 
     JLabel otg = new JLabel();
 
-    JRadioButton opt1 = new JRadioButton();
-    JRadioButton opt2 = new JRadioButton();
-    JRadioButton opt3 = new JRadioButton();
-    JRadioButton opt4 = new JRadioButton();
+    JButton opt1 = new JButton();
+    JButton opt2 = new JButton();
+    JButton opt3 = new JButton();
+    JButton opt4 = new JButton();
     ButtonGroup group = new ButtonGroup();
     JLabel question = new JLabel();
     public GameFrame(){
@@ -116,11 +116,11 @@ public class GameFrame{
 
 
         // Create another panel with text
-        JPanel questionPanel = new JPanel ();
-        questionPanel.setBounds(40,560,1820,480);
-        //questionPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 10, 10));
-        questionPanel.setLayout(new FlowLayout());
-        //questionPanel.setBackground(Color.pink);
+        JPanel buttonsPanel = new JPanel ();
+        buttonsPanel.setBounds(40,800,1820,100);
+        //buttonsPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 10, 10));
+        buttonsPanel.setLayout(new GridLayout(2,2,20,10));
+        //buttonsPanel.setBackground(Color.pink);
 
 
         question.setText(vupros.getAsk());
@@ -216,23 +216,21 @@ public class GameFrame{
             }
         });
 
-        group.add(opt1);
-        group.add(opt2);
-        group.add(opt3);
-        group.add(opt4);
+//        group.add(opt1);
+//        group.add(opt2);
+//        group.add(opt3);
+//        group.add(opt4);
 
-        GridBagConstraints c = new GridBagConstraints();
-        c.fill = GridBagConstraints.PAGE_START;
-        questionPanel.add(question,c);
-        c.fill = GridBagConstraints.LINE_START;
-        questionPanel.add(opt1,c);
-        c.fill = GridBagConstraints.LINE_END;
-        questionPanel.add(opt2,c);
-        c.fill = GridBagConstraints.LAST_LINE_START;
-        questionPanel.add(opt3,c);
-        c.fill = GridBagConstraints.LAST_LINE_END;
-        questionPanel.add(opt4);
-        frame.add(questionPanel);
+
+        //buttonsPanel.add(question);
+        buttonsPanel.add(opt1);
+        opt1.setContentAreaFilled(false);
+        opt1.setFocusPainted(false);
+        opt1.setBorderPainted(false);
+        buttonsPanel.add(opt2);
+        buttonsPanel.add(opt3);
+        buttonsPanel.add(opt4);
+        frame.add(buttonsPanel);
 
         // Set layout for the main frame
         frame.add(otg);
@@ -256,6 +254,5 @@ public class GameFrame{
         opt2.setEnabled(true);
         opt3.setEnabled(true);
         opt4.setEnabled(true);
-        group.clearSelection();
     }
 }
