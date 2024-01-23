@@ -4,10 +4,16 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.Image;
 import java.awt.image.ImageObserver;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import javax.swing.ImageIcon;
+import java.awt.Image;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import javax.swing.*;
 
 // Driver Class
-public class GameFrame{
+public class GameFrame extends JFrame{
 
     int rightAnswers = 0,questionIdx = 0;
     Question vupros = new Question();
@@ -28,6 +34,13 @@ public class GameFrame{
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setBounds(0,0,1920,1040);
 
+        initComponents();
+        Path resourceDirectory = Paths.get("src","images");
+        String absolutePath = resourceDirectory.toFile().getAbsolutePath();
+        Image imgIcon = new ImageIcon(absolutePath+"/background.png").getImage();
+        //Image imgIcon = new ImageIcon("src/images/background.jpg").getImage();
+        BackgroundClass pnl = new BackgroundClass(imgIcon);
+        pnl.setBounds(0, 0, 1920, 1080);
 //        JLabel background=new JLabel(new ImageIcon("src/images/background.png"));
 //        frame.add(background);
 //        background.setLayout(new FlowLayout());
@@ -72,6 +85,7 @@ public class GameFrame{
         hintsPanel.add(btnCall);
         hintsPanel.add(btn50);
         hintsPanel.add(btnAudience);
+        hintsPanel.setOpaque(false);
 
         otg.setBounds(1600,60,300,40);
 
@@ -120,14 +134,14 @@ public class GameFrame{
         buttonsPanel.setBounds(40,800,1820,100);
         //buttonsPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 10, 10));
         buttonsPanel.setLayout(new GridLayout(2,2,20,10));
+        buttonsPanel.setOpaque(false);
         //buttonsPanel.setBackground(Color.pink);
 
 
         question.setText(vupros.getAsk());
         //question.setVerticalAlignment(SwingConstants.NORTH);
         question.setFont(new Font("Arial",Font.BOLD, 40));
-        question.setBounds(60,620,1800,100);
-        question.setHorizontalAlignment(SwingConstants.CENTER);
+        //question.setBounds(60,620,1800,100);
         //question.setHorizontalAlignment(SwingConstants.CENTER);
 
 
@@ -228,11 +242,9 @@ public class GameFrame{
 //        opt1.setContentAreaFilled(false);
 //        opt1.setFocusPainted(false);
 //        opt1.setBorderPainted(false);
-        opt1.setBackground(Color.orange);
         buttonsPanel.add(opt2);
         buttonsPanel.add(opt3);
         buttonsPanel.add(opt4);
-        frame.add(question);
         frame.add(buttonsPanel);
 
         // Set layout for the main frame
@@ -240,7 +252,7 @@ public class GameFrame{
         frame.setLayout(null);
         frame.setJMenuBar(menuBar);
         frame.add(hintsPanel);
-
+        frame.add(pnl);
         frame.setVisible(true);
     }
     void new_question(){
@@ -257,5 +269,22 @@ public class GameFrame{
         opt2.setEnabled(true);
         opt3.setEnabled(true);
         opt4.setEnabled(true);
+    }
+    private void initComponents() {
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(0, 400, Short.MAX_VALUE)
+        );
+        layout.setVerticalGroup(
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(0, 300, Short.MAX_VALUE)
+        );
+
+        pack();
     }
 }
