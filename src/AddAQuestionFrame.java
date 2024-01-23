@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AddAQuestionFrame {
-    public static List<Question> list = new ArrayList<>();
+    public static List<Question> list = new ArrayList<Question>();
     public AddAQuestionFrame(){
         JFrame frame = new JFrame("Add a question");
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

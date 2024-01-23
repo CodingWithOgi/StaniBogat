@@ -126,7 +126,8 @@ public class GameFrame{
         question.setText(vupros.getAsk());
         //question.setVerticalAlignment(SwingConstants.NORTH);
         question.setFont(new Font("Arial",Font.BOLD, 40));
-        //question.setBounds(60,620,1800,100);
+        question.setBounds(60,620,1800,100);
+        question.setHorizontalAlignment(SwingConstants.CENTER);
         //question.setHorizontalAlignment(SwingConstants.CENTER);
 
 
@@ -224,12 +225,14 @@ public class GameFrame{
 
         //buttonsPanel.add(question);
         buttonsPanel.add(opt1);
-        opt1.setContentAreaFilled(false);
-        opt1.setFocusPainted(false);
-        opt1.setBorderPainted(false);
+//        opt1.setContentAreaFilled(false);
+//        opt1.setFocusPainted(false);
+//        opt1.setBorderPainted(false);
+        opt1.setBackground(Color.orange);
         buttonsPanel.add(opt2);
         buttonsPanel.add(opt3);
         buttonsPanel.add(opt4);
+        frame.add(question);
         frame.add(buttonsPanel);
 
         // Set layout for the main frame
