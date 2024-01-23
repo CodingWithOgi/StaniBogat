@@ -41,6 +41,7 @@ public class GameFrame extends JFrame{
         //Image imgIcon = new ImageIcon("src/images/background.jpg").getImage();
         BackgroundClass pnl = new BackgroundClass(imgIcon);
         pnl.setBounds(0, 0, 1920, 1080);
+        frame.add(pnl);
 //        JLabel background=new JLabel(new ImageIcon("src/images/background.png"));
 //        frame.add(background);
 //        background.setLayout(new FlowLayout());
@@ -141,7 +142,9 @@ public class GameFrame extends JFrame{
         question.setText(vupros.getAsk());
         //question.setVerticalAlignment(SwingConstants.NORTH);
         question.setFont(new Font("Arial",Font.BOLD, 40));
-        //question.setBounds(60,620,1800,100);
+        question.setBounds(60,620,1800,100);
+        question.setHorizontalAlignment(SwingConstants.CENTER);
+        question.setBackground(Color.BLUE);
         //question.setHorizontalAlignment(SwingConstants.CENTER);
 
 
@@ -239,12 +242,16 @@ public class GameFrame extends JFrame{
 
         //buttonsPanel.add(question);
         buttonsPanel.add(opt1);
+        opt1.setBackground(Color.orange);
 //        opt1.setContentAreaFilled(false);
 //        opt1.setFocusPainted(false);
 //        opt1.setBorderPainted(false);
         buttonsPanel.add(opt2);
+        opt2.setBackground(Color.orange);
         buttonsPanel.add(opt3);
+        opt3.setBackground(Color.orange);
         buttonsPanel.add(opt4);
+        opt4.setBackground(Color.orange);
         frame.add(buttonsPanel);
 
         // Set layout for the main frame
@@ -252,7 +259,8 @@ public class GameFrame extends JFrame{
         frame.setLayout(null);
         frame.setJMenuBar(menuBar);
         frame.add(hintsPanel);
-        frame.add(pnl);
+        frame.add(question);
+
         frame.setVisible(true);
     }
     void new_question(){
