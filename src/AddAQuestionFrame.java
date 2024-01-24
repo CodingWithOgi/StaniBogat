@@ -2,12 +2,15 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.ArrayList;
+import java.util.Scanner;
 
 public class AddAQuestionFrame {
     public static List<Question> list = new ArrayList<Question>();
-    public AddAQuestionFrame(){
+    public AddAQuestionFrame() throws FileNotFoundException {
         JFrame frame = new JFrame("Add a question");
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.setBounds(0,0,1920,1040);
@@ -53,8 +56,19 @@ public class AddAQuestionFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // zapisva vyv file-a
-                String p = "z"+ correctfld.getText();
-                p+= "z";
+                File file = new File("src/resources/question_list.txt");
+                FileWriter output = null;
+                try {
+                    output = new FileWriter(file,true);
+                    output.write("\n"+questionfld.getText()+""+correctfld.getText());
+                    output.write("\n"+ans1fld.getText());
+                    output.write("\n"+ans2fld.getText());
+                    output.write("\n"+ans3fld.getText());
+                    output.write("\n"+ans4fld.getText());
+                    output.close();
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                }
                 if(!(correctfld.getText().equals("1") || correctfld.getText().equals("2") || correctfld.getText().equals("3") || correctfld.getText().equals("4"))){
                     JOptionPane.showMessageDialog(null,"The correct answer should be a number 1 - 4","Correct answer invalid!", JOptionPane.ERROR_MESSAGE);
                 }else{

@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileNotFoundException;
 
 public class Menu {
     public Menu(){
@@ -43,7 +44,11 @@ public class Menu {
         addAQuestionBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                AddAQuestionFrame frame1 = new AddAQuestionFrame();
+                try {
+                    AddAQuestionFrame frame1 = new AddAQuestionFrame();
+                } catch (FileNotFoundException ex) {
+                    throw new RuntimeException(ex);
+                }
             }
         });
 

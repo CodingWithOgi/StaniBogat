@@ -3,17 +3,14 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.Image;
-import java.awt.image.ImageObserver;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import javax.swing.ImageIcon;
-import java.awt.Image;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import javax.swing.*;
+import java.util.Random;
 
 // Driver Class
 public class GameFrame extends JFrame{
+
 
     int rightAnswers = 0,questionIdx = 0;
     Question vupros = new Question();
@@ -34,19 +31,13 @@ public class GameFrame extends JFrame{
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setBounds(0,0,1920,1040);
 
-        initComponents();
-        Path resourceDirectory = Paths.get("src","images");
-        String absolutePath = resourceDirectory.toFile().getAbsolutePath();
-        Image imgIcon = new ImageIcon(absolutePath+"/background.png").getImage();
-        //Image imgIcon = new ImageIcon("src/images/background.jpg").getImage();
-        BackgroundClass pnl = new BackgroundClass(imgIcon);
-        pnl.setBounds(0, 0, 1920, 1080);
-        frame.add(pnl);
-//        JLabel background=new JLabel(new ImageIcon("src/images/background.png"));
-//        frame.add(background);
-//        background.setLayout(new FlowLayout());
-//        background.setSize(399,399);
-//        background.setSize(1920,1080);
+//        initComponents();
+//        Path resourceDirectory = Paths.get("src","images");
+//        String absolutePath = resourceDirectory.toFile().getAbsolutePath();
+//        Image imgIcon = new ImageIcon(absolutePath+"/background.png").getImage();
+//        BackgroundClass pnl = new BackgroundClass(imgIcon);
+//        pnl.setBounds(0, 0, 1920, 1080);
+//        frame.add(pnl);
 
         // Create a menu bar
         JMenuBar menuBar = new JMenuBar();
@@ -94,17 +85,49 @@ public class GameFrame extends JFrame{
         btn50.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                int blockedans = 0,currans = 1,first = 0;
+                while(blockedans<2){
+                    Random rand = new Random();
+                    currans = rand.nextInt(4)+1;
+                    if(currans!=correctAns){
+                        if(first==0 || first!=currans){
+                            first = currans;
+                            if(currans==1){
+                                opt1.setBackground(Color.red);
+                                opt1.setEnabled(false);
+                            }
+                            if(currans==2){
+                                opt2.setBackground(Color.red);
+                                opt2.setEnabled(false);
+                            }
+                            if(currans==3){
+                                opt3.setBackground(Color.red);
+                                opt3.setEnabled(false);
+                            }
+                            if(currans==4){
+                                opt4.setBackground(Color.red);
+                                opt4.setEnabled(false);
+                            }
+                        }
+                        blockedans++;
+                    }
+                }
                 btn50.setEnabled(false);
-
             }
         });
         btnCall.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                String ans;
-                ans = "B";
-
+                int ans=1;
+                Random rand = new Random();
+                int friendAns = rand.nextInt(100);
+                if(friendAns%2==0 || friendAns%3==0) {
+                    ans = correctAns;
+                }
+                else{
+                    ans = friendAns%4;
+                }
                 JLabel message = new JLabel("Your friend tells you answer "+ ans + " is correct!");
                 message.setBounds(0, 0, 200, 64);
                 message.setFont(new Font("Arial", Font.BOLD, 30));
@@ -119,7 +142,21 @@ public class GameFrame extends JFrame{
         btnAudience.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JLabel message = new JLabel("A: 67 B: 20 C: 3 D: 10");
+                int chance = 40;
+                int chanceA=0,chanceB=0,chanceC=0,chanceD=0;
+                Random rand = new Random();
+                chanceA = rand.nextInt(chance);
+                chance-=chanceA;
+                chanceB = rand.nextInt(chance);
+                chance-=chanceB;
+                chanceC = rand.nextInt(chance);
+                chance-=chanceC;
+                chanceD = chance;
+                if(correctAns==1) chanceA+=60;
+                if(correctAns==2) chanceB+=60;
+                if(correctAns==3) chanceC+=60;
+                if(correctAns==4) chanceD+=60;
+                JLabel message = new JLabel("A: "+chanceA+" B: " + chanceB+ " C: " + chanceC+ " D: "+ chanceD);
                 message.setBounds(0, 0, 200, 64);
                 message.setFont(new Font("Arial", Font.BOLD, 30));
                 message.setHorizontalAlignment(SwingConstants.CENTER);
@@ -263,9 +300,28 @@ public class GameFrame extends JFrame{
 
         frame.setVisible(true);
     }
+    void victory(){
+        ImageIcon icon = new ImageIcon("src/images/victory.png");
+        JLabel message = new JLabel("You won the game with "+ rightAnswers+ " correct answers and won a million dollars!");
+        message.setFont(new Font("Arial", Font.BOLD, 30));
+        JOptionPane.showMessageDialog(null,message,"VICTORY",JOptionPane.PLAIN_MESSAGE,icon);
+        System.exit(0);
+    }
     void new_question(){
-        otg.setText("You have answered correctly to "+ rightAnswers+ " questions.");
-        questionIdx++; /// calculate randomly
+        if(rightAnswers==15 || questionIdx==AddAQuestionFrame.list.size()-1){
+            victory();
+            return;
+        }
+//        *** shuffle the questions
+//        otg.setText("You have answered correctly to "+ rightAnswers+ " questions.");
+//        Random rand = new Random();
+//        int a = rand.nextInt(AddAQuestionFrame.list.size());
+//        while(AddAQuestionFrame.list.get(a).isPlayed()==true){
+//            a = rand.nextInt();
+//        }
+//        System.out.println(a);
+//        AddAQuestionFrame.list.get(a).setPlayed(true);
+        questionIdx++;
         vupros.change_question(questionIdx);
         correctAns = vupros.getCorrectans();
         question.setText(vupros.getAsk());
@@ -277,6 +333,10 @@ public class GameFrame extends JFrame{
         opt2.setEnabled(true);
         opt3.setEnabled(true);
         opt4.setEnabled(true);
+        opt1.setBackground(Color.orange);
+        opt2.setBackground(Color.orange);
+        opt3.setBackground(Color.orange);
+        opt4.setBackground(Color.orange);
     }
     private void initComponents() {
 
