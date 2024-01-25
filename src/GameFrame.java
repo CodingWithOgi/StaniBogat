@@ -31,13 +31,13 @@ public class GameFrame extends JFrame{
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setBounds(0,0,1920,1040);
 
-//        initComponents();
-//        Path resourceDirectory = Paths.get("src","images");
-//        String absolutePath = resourceDirectory.toFile().getAbsolutePath();
-//        Image imgIcon = new ImageIcon(absolutePath+"/background.png").getImage();
-//        BackgroundClass pnl = new BackgroundClass(imgIcon);
-//        pnl.setBounds(0, 0, 1920, 1080);
-//        frame.add(pnl);
+        initComponents();
+        Path resourceDirectory = Paths.get("src","images");
+        String absolutePath = resourceDirectory.toFile().getAbsolutePath();
+        Image imgIcon = new ImageIcon(absolutePath+"/background.png").getImage();
+        BackgroundClass pnl = new BackgroundClass(imgIcon);
+        pnl.setBounds(0, 0, 1920, 1080);
+        frame.add(pnl);
 
         // Create a menu bar
         JMenuBar menuBar = new JMenuBar();
@@ -186,12 +186,16 @@ public class GameFrame extends JFrame{
 
 
         opt1.setText(vupros.getAns1());
+        opt1.setFont(new Font("Arial",Font.PLAIN,25));
         opt1.setBounds(40,800,700,100);
         opt2.setText(vupros.getAns2());
+        opt2.setFont(new Font("Arial",Font.PLAIN,25));
         opt2.setBounds(40,940,700,100);
         opt3.setText(vupros.getAns3());
+        opt3.setFont(new Font("Arial",Font.PLAIN,25));
         opt3.setBounds(800,800,700,100);
         opt4.setText(vupros.getAns4());
+        opt4.setFont(new Font("Arial",Font.PLAIN,25));
         opt4.setBounds(800,940,700,100);
 
         opt1.addActionListener(new ActionListener() {
@@ -313,7 +317,7 @@ public class GameFrame extends JFrame{
             return;
         }
 //        *** shuffle the questions
-//        otg.setText("You have answered correctly to "+ rightAnswers+ " questions.");
+          otg.setText("You have answered correctly to "+ rightAnswers+ " questions.");
 //        Random rand = new Random();
 //        int a = rand.nextInt(AddAQuestionFrame.list.size());
 //        while(AddAQuestionFrame.list.get(a).isPlayed()==true){
