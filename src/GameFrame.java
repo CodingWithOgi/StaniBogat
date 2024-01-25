@@ -31,13 +31,13 @@ public class GameFrame extends JFrame{
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setBounds(0,0,1920,1040);
 
-        initComponents();
-        Path resourceDirectory = Paths.get("src","images");
-        String absolutePath = resourceDirectory.toFile().getAbsolutePath();
-        Image imgIcon = new ImageIcon(absolutePath+"/background.png").getImage();
-        BackgroundClass pnl = new BackgroundClass(imgIcon);
-        pnl.setBounds(0, 0, 1920, 1080);
-        frame.add(pnl);
+//        initComponents();
+//        Path resourceDirectory = Paths.get("src","images");
+//        String absolutePath = resourceDirectory.toFile().getAbsolutePath();
+//        Image imgIcon = new ImageIcon(absolutePath+"/background.png").getImage();
+//        BackgroundClass pnl = new BackgroundClass(imgIcon);
+//        pnl.setBounds(0, 0, 1920, 1080);
+//        frame.add(pnl);
 
         // Create a menu bar
         JMenuBar menuBar = new JMenuBar();
